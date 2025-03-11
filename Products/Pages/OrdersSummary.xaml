@@ -1,0 +1,145 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Products.OrdersSummary"
+             BackgroundColor="White">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- Navbar -->
+        <Grid BackgroundColor="#531414" 
+             Padding="10" 
+             HeightRequest="80" 
+             VerticalOptions="Start" 
+             ZIndex="1"
+             Row="0">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Logo -->
+
+            <Image Source="logo.png" 
+                  HeightRequest="40" 
+                  VerticalOptions="Center" 
+                  Grid.Column="0"
+                  WidthRequest="200"/>
+
+            <!-- Logo -->
+
+            <!-- Navbar -->
+
+            <HorizontalStackLayout Spacing="20" 
+                                  HorizontalOptions="Center" 
+                                  Grid.Column="1">
+
+                <Button x:Name="HomeButton"
+                       Text="Home"
+                       Clicked="OnHomeClicked"
+                       BackgroundColor="Transparent"
+                       TextColor="#FFBD59"
+                       FontFamily="InstrumentSerif"
+                       WidthRequest="200">
+                    <Button.GestureRecognizers>
+                        <PointerGestureRecognizer PointerEntered="OnPointerEntered" PointerExited="OnPointerExited"/>
+                    </Button.GestureRecognizers>
+                </Button>
+
+                <Button x:Name="AboutUsButton" 
+                       Text="About Us" 
+                       BackgroundColor="Transparent" 
+                       TextColor="#FFBD59" 
+                       FontFamily="InstrumentSerif"
+                       WidthRequest="200">
+                    <Button.GestureRecognizers>
+                        <PointerGestureRecognizer PointerEntered="OnPointerEntered" PointerExited="OnPointerExited"/>
+                    </Button.GestureRecognizers>
+                </Button>
+
+                <Button Text="Login/SignUp" 
+                       BackgroundColor="#FFBD59" 
+                       TextColor="White" 
+                       FontFamily="InstrumentSerif" 
+                       CornerRadius="20"
+                       WidthRequest="200"/>
+
+            </HorizontalStackLayout>
+
+            <!-- Navbar -->
+
+            <!-- Cart -->
+
+            <Button Text="Cart" 
+                   Clicked="OnOrdersClicked" 
+                   BackgroundColor="#FFBD59" 
+                   TextColor="White" 
+                   FontFamily="InstrumentSerif" 
+                   CornerRadius="20" 
+                   Grid.Column="2"
+                   WidthRequest="200"/>
+
+            <!-- Cart -->
+
+        </Grid>
+
+        <!-- Scrollable Content -->
+        <ScrollView x:Name="MainScrollView" BackgroundColor="#ddd7c4" Grid.Row="1">
+
+            <VerticalStackLayout Padding="20">
+
+                <!-- Order Summary Container -->
+                <Frame Padding="15" CornerRadius="20" BackgroundColor="#531414">
+                    <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="*, *, *, *" Padding="10">
+
+                        <!-- Title Inside the Container (Top Left) -->
+                        <Label Text="Order Summary:" FontSize="50" FontAttributes="Bold" Grid.Row="0" Grid.ColumnSpan="4" HorizontalOptions="Start" TextColor="White" FontFamily="InstrumentSerif"/>
+
+                        <!-- Headers -->
+                        <Label Text="User Name" FontAttributes="Bold" Grid.Row="1" TextColor="White" FontFamily="InstrumentSerif" FontSize="30"/>
+                        <Label Text="Order/s" FontAttributes="Bold" Grid.Row="1" Grid.Column="1" TextColor="White" FontFamily="InstrumentSerif" FontSize="30"/>
+                        <Label Text="Quantity" FontAttributes="Bold" Grid.Row="1" Grid.Column="2" TextColor="White" FontFamily="InstrumentSerif" FontSize="30"/>
+                        <Label Text="Price" FontAttributes="Bold" Grid.Row="1" Grid.Column="3" TextColor="White" FontFamily="InstrumentSerif" FontSize="30"/>
+
+                        <!-- User Name (Leave Blank for Now) -->
+                        <Label x:Name="UserNameLabel" Grid.Row="2" TextColor="White" FontFamily="InstrumentSerif" FontSize="30"/>
+
+                        <!-- Order List (Populated in C#) -->
+                        <CollectionView Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Orders}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Label Text="{Binding ProductName}" TextColor="White" FontFamily="InstrumentSerif" FontSize="30"/>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+                        <!-- Quantity List -->
+                        <CollectionView Grid.Row="2" Grid.Column="2" ItemsSource="{Binding Orders}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Label Text="{Binding Quantity}" TextColor="White" FontFamily="InstrumentSerif" FontSize="30"/>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+                        <!-- Price List -->
+                        <CollectionView Grid.Row="2" Grid.Column="3" ItemsSource="{Binding Orders}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Label Text="{Binding TotalPrice}" TextColor="White" FontFamily="InstrumentSerif" FontSize="30"/>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+                        <!-- Total Price -->
+                        <Label Text="Total:" FontAttributes="Bold" Grid.Row="3" Grid.ColumnSpan="3" TextColor="White" FontFamily="InstrumentSerif" FontSize="30"/>
+                        <Label x:Name="TotalPriceLabel" Grid.Row="3" Grid.Column="3" FontAttributes="Bold" TextColor="White" FontFamily="InstrumentSerif" FontSize="30"/>
+                    </Grid>
+                </Frame>
+            </VerticalStackLayout>
+
+        </ScrollView>
+
+    </Grid>
+</ContentPage>

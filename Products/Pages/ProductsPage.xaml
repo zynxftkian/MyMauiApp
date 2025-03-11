@@ -1,0 +1,319 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Products.ProductsPage"
+             BackgroundColor="#531414">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <Grid BackgroundColor="#531414" 
+              Padding="10" 
+              HeightRequest="80" 
+              VerticalOptions="Start" 
+              ZIndex="1"
+              Row="0">
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Logo -->
+
+            <Image Source="logo.png" 
+                   HeightRequest="40" 
+                   VerticalOptions="Center" 
+                   Grid.Column="0"
+                   WidthRequest="200"/>
+
+            <!-- Logo -->
+            
+            <!-- Navbar -->
+            
+            <HorizontalStackLayout Spacing="20" 
+                                   HorizontalOptions="Center" 
+                                   Grid.Column="1">
+
+                <Button x:Name="HomeButton"
+                        Text="Home"
+                        Clicked="OnHomeClicked"
+                        BackgroundColor="Transparent"
+                        TextColor="#FFBD59"
+                        FontFamily="InstrumentSerif"
+                        WidthRequest="200">
+                    <Button.GestureRecognizers>
+                        <PointerGestureRecognizer PointerEntered="OnPointerEntered" PointerExited="OnPointerExited"/>
+                    </Button.GestureRecognizers>
+                </Button>
+
+                <Button x:Name="ProductsButton" 
+                        Text="Products" 
+                        Clicked="OnProductsClicked" 
+                        BackgroundColor="Transparent" 
+                        TextColor="#FFBD59" 
+                        FontFamily="InstrumentSerif"
+                        WidthRequest="200">
+                    <Button.GestureRecognizers>
+                        <PointerGestureRecognizer PointerEntered="OnPointerEntered" PointerExited="OnPointerExited"/>
+                    </Button.GestureRecognizers>
+                </Button>
+
+                <Button x:Name="AboutUsButton" 
+                        Text="About Us" 
+                        BackgroundColor="Transparent" 
+                        TextColor="#FFBD59" 
+                        FontFamily="InstrumentSerif"
+                        WidthRequest="200">
+                    <Button.GestureRecognizers>
+                        <PointerGestureRecognizer PointerEntered="OnPointerEntered" PointerExited="OnPointerExited"/>
+                    </Button.GestureRecognizers>
+                </Button>
+
+                <Button Text="Login/SignUp" 
+                        BackgroundColor="#FFBD59" 
+                        TextColor="White" 
+                        FontFamily="InstrumentSerif" 
+                        CornerRadius="20"
+                        WidthRequest="200"/>
+                
+            </HorizontalStackLayout>
+
+            <!-- Navbar -->
+
+            <!-- Cart -->
+            
+            <Button Text="Cart" 
+                    Clicked="OnOrdersClicked" 
+                    BackgroundColor="#FFBD59" 
+                    TextColor="White" 
+                    FontFamily="InstrumentSerif" 
+                    CornerRadius="20" 
+                    Grid.Column="2"
+                    WidthRequest="200"/>
+
+            <!-- Cart -->
+            
+        </Grid>
+        
+        <!-- Main Content -->
+
+        <ScrollView x:Name="MainScrollView" 
+                    BackgroundColor="#531414" 
+                    Grid.Row="1">
+            
+            <VerticalStackLayout>
+                
+                <!-- Home -->
+                
+                <Grid HeightRequest="900" 
+                      Padding="20" 
+                      BackgroundColor="#ddd7c4">
+                    
+                    <Grid.ColumnDefinitions>
+                        
+                        <ColumnDefinition Width="1*" />
+                        
+                        <ColumnDefinition Width="1*" />
+                        
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Best Seller -->
+                    
+                    <VerticalStackLayout 
+                        Grid.Column="0" 
+                        HorizontalOptions="Center" 
+                        VerticalOptions="Center">
+                        
+                        <!-- picture -->
+                        
+                        <Frame BackgroundColor="Transparent" 
+                               CornerRadius="15" 
+                               WidthRequest="300" 
+                               HeightRequest="300" 
+                               BorderColor="#ddd7c4">
+                            
+                            <Image Source="nobg.png" Aspect="AspectFill"/>
+                            
+                        </Frame>
+
+                        <!-- picture -->
+
+                        <!-- SHUATIK -->
+                        
+                        <Label Text="Shuatik" 
+                               FontSize="40" 
+                               TextColor="#FFBD59" 
+                               FontFamily="IrishGrover" 
+                               HorizontalOptions="Center" 
+                               FontAttributes="Bold"/>
+
+                        <!-- SHUATIK -->
+
+                        <!-- SARAP NA WALASTIK -->
+                        
+                        <Label Text="SARAP NA WALASTIK!" 
+                               FontSize="60" 
+                               TextColor="#FFBD59"
+                               FontFamily="IslandMoments" 
+                               HorizontalOptions="Center" 
+                               FontAttributes="Bold"/>
+
+                        <!-- SARAP NA WALASTIK -->
+
+                    </VerticalStackLayout>
+                    
+                    <!-- Logo -->
+
+                    <Image Source="logo.png" 
+                           Grid.Column="1" 
+                           Aspect="AspectFit" 
+                           WidthRequest="250" 
+                           HeightRequest="250"
+                           HorizontalOptions="Center"/>
+
+                    <!-- Logo -->
+                    
+                </Grid>
+
+                <!-- Home -->
+                
+                <!-- Products -->
+
+                <Grid x:Name="ProductsContainer" 
+                      HeightRequest="900" 
+                      Padding="20">
+                    
+                    <!-- OUR SPECIAL PASTA -->
+                    
+                    <Label Text="Our Special Pasta" 
+                           FontSize="70" 
+                           TextColor="#FFBD59" 
+                           FontFamily="InstrumentSerif"
+                           HorizontalOptions="Center" 
+                           VerticalOptions="Start" 
+                           Margin="0,0,0,30"/>
+
+                    <!-- OUR SPECIAL PASTA -->
+
+                    <!-- Products -->
+                    
+                    <HorizontalStackLayout Spacing="100" 
+                                           HorizontalOptions="Center" 
+                                           VerticalOptions="Center">
+                        
+                        <!-- sartik -->
+                        
+                        <VerticalStackLayout Spacing="40" 
+                                             HorizontalOptions="Center">
+                            
+                            <!-- SARTIK -->
+                            
+                            <Label Text="SARTIK" 
+                                   FontSize="50" 
+                                   TextColor="#FFBD59" 
+                                   FontFamily="InstrumentSerif"
+                                   HorizontalOptions="Center"/>
+
+                            <!-- SARTIK -->
+
+                            <Frame CornerRadius="20" 
+                                   Padding="0" 
+                                   WidthRequest="350" 
+                                   HeightRequest="420" 
+                                   BorderColor="#531414">
+                                
+                                <Grid>
+                                    
+                                    <!-- picture -->
+                                    
+                                    <Image Source="sartik.jpg" 
+                                           Aspect="AspectFill" 
+                                           WidthRequest="350" 
+                                           HeightRequest="420"
+                                           HorizontalOptions="Fill" 
+                                           VerticalOptions="Fill"/>
+
+                                    <!-- picture -->
+                                    
+                                    <!-- pagtinutok yung mouse eto makikita -->
+
+                                    <Label x:Name="desc1" Text="Sartik is a premium version of Shuatik made of Spanish sardines, carefully crafted enhanced by slightly salty umami flavor profile with a blend of herbs and spice, it can be paired with atchara." 
+                           TextColor="Black" BackgroundColor="#ddd7c4" IsVisible="False" Padding="50"
+                           HorizontalOptions="Fill" VerticalOptions="Fill"
+                           FontSize="20" LineBreakMode="WordWrap"
+                           HorizontalTextAlignment="Center" VerticalTextAlignment="Start" FontFamily="InstrumentSerif"/>
+                                </Grid>
+                                <Frame.GestureRecognizers>
+                                    <PointerGestureRecognizer PointerEntered="OnPointerEntered2" PointerExited="OnPointerExited2"/>
+                                </Frame.GestureRecognizers>
+                            </Frame>
+
+                                    <!-- pagtinutok yung mouse eto makikita -->
+
+                            <Button Text="ORDER" BackgroundColor="Green" TextColor="#FFBD59" CornerRadius="25"
+                    Clicked="OnOrderClicked" WidthRequest="300" HeightRequest="60" 
+                    HorizontalOptions="Center" FontFamily="InstrumentSerif" FontSize="18"/>
+                        </VerticalStackLayout>
+
+                        <!-- sartik -->
+
+                        <!-- Product 2 -->
+                        <VerticalStackLayout Spacing="40" HorizontalOptions="Center">
+                            <Label Text="SAUSATIK" FontSize="50" TextColor="#FFBD59" FontFamily="InstrumentSerif"
+                   HorizontalOptions="Center"/>
+                            <Frame CornerRadius="20" Padding="0" WidthRequest="350" HeightRequest="420" BorderColor="#531414">
+                                <Grid>
+                                    <Image Source="sausatik.jpg" Aspect="AspectFill" WidthRequest="350" HeightRequest="420"
+                           HorizontalOptions="Fill" VerticalOptions="Fill"/>
+                                    <Label x:Name="desc2" Text="Sausatik is made of Chinese sausage with versatility that balances sweetness, salty, and creaminess, making it the perfect complement to pasta dish." 
+                           TextColor="Black" BackgroundColor="#ddd7c4" IsVisible="False" Padding="50"
+HorizontalOptions="Fill" VerticalOptions="Fill"
+FontSize="20" LineBreakMode="WordWrap"
+HorizontalTextAlignment="Center" VerticalTextAlignment="Start" FontFamily="InstrumentSerif"/>
+                                </Grid>
+                                <Frame.GestureRecognizers>
+                                    <PointerGestureRecognizer PointerEntered="OnPointerEntered2" PointerExited="OnPointerExited2"/>
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                            <Button Text="ORDER" BackgroundColor="Green" TextColor="#FFBD59" CornerRadius="25"
+                    Clicked="OnOrderClicked" WidthRequest="300" HeightRequest="60" 
+                    HorizontalOptions="Center" FontFamily="InstrumentSerif" FontSize="18"/>
+                        </VerticalStackLayout>
+
+                        <!-- Product 3 -->
+                        <VerticalStackLayout Spacing="40" HorizontalOptions="Center">
+                            <Label Text="SHUATIK" FontSize="50" TextColor="#FFBD59" FontFamily="InstrumentSerif"
+                   HorizontalOptions="Center"/>
+                            <Frame CornerRadius="20" Padding="0" WidthRequest="350" HeightRequest="420" BorderColor="#531414">
+                                <Grid>
+                                    <Image Source="shuatik.jpg" Aspect="AspectFill" WidthRequest="350" HeightRequest="420"
+                           HorizontalOptions="Fill" VerticalOptions="Fill"/>
+                                    <Label x:Name="desc3" Text="The pasta uses a squash sauce with coconut milk providing a creamy, slightly sweet, and savory flavors that in a way depicts a traditional Filipino dish GINATAANG KALABASA. Topped with latik that is made by simmering coconut milk until the solids separate into curds and caramelized into golden toasted flavor." 
+TextColor="Black" BackgroundColor="#ddd7c4" IsVisible="False" Padding="50"
+HorizontalOptions="Fill" VerticalOptions="Fill"
+FontSize="20" LineBreakMode="WordWrap"
+HorizontalTextAlignment="Center" VerticalTextAlignment="Start" FontFamily="InstrumentSerif"/>
+                                </Grid>
+                                <Frame.GestureRecognizers>
+                                    <PointerGestureRecognizer PointerEntered="OnPointerEntered2" PointerExited="OnPointerExited2"/>
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                            <Button Text="ORDER" BackgroundColor="Green" TextColor="#FFBD59" CornerRadius="25"
+                    Clicked="OnOrderClicked" WidthRequest="300" HeightRequest="60" 
+                    HorizontalOptions="Center" FontFamily="InstrumentSerif" FontSize="18"/>
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+
+                    <!-- Products -->
+
+                </Grid>
+
+                <!-- Products -->
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Main Content -->
+
+    </Grid>
+</ContentPage>

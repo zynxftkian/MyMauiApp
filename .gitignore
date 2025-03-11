@@ -1,0 +1,4 @@
+# Ignore Visual Studio and .NET build files
+.vs/
+bin/
+obj/
