@@ -77,16 +77,28 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Pages\LogInLogOutPage.xaml.cs">
+	    <DependentUpon>LogInLogOutPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\OrdersSummaryPage.xaml.cs">
+	    <DependentUpon>OrdersSummaryPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\ProductsPage.xaml.cs">
 	    <DependentUpon>ProductsPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Pages\AboutUsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\LogInLogOutPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\OrdersPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\OrdersSummary.xaml">
+	  <MauiXaml Update="Pages\OrdersSummaryPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\ProductsPage.xaml">

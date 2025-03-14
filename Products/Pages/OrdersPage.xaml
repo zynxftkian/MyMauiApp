@@ -1,161 +1,218 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Products.Pages.OrdersPage"
-             BackgroundColor="White">
-
+             x:Class="Products.Pages.OrdersPage">
     <Grid RowDefinitions="Auto,*">
-
         <Grid BackgroundColor="#531414" 
-             Padding="10" 
-             HeightRequest="80" 
-             VerticalOptions="Start" 
-             ZIndex="1"
-             Row="0">
-
+              Padding="10" 
+              HeightRequest="70" 
+              VerticalOptions="Start" 
+              ZIndex="1"
+              Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-
-            <!-- Logo -->
-
-            <Image Source="logo.png" 
-                  HeightRequest="40" 
-                  VerticalOptions="Center" 
-                  Grid.Column="0"
-                  WidthRequest="200"/>
-
-            <!-- Logo -->
-
-            <!-- Navbar -->
-
-            <HorizontalStackLayout Spacing="20" 
-                                  HorizontalOptions="Center" 
-                                  Grid.Column="1">
-
+            <Frame Grid.Column="0"
+                   WidthRequest="100"
+                   HeightRequest="100"
+                   BackgroundColor="Transparent"
+                   BorderColor="Transparent">
+                <Image Source="logo.png"
+                       Aspect="AspectFit"/>
+            </Frame>
+            <HorizontalStackLayout Spacing="100" 
+                                   HorizontalOptions="Center" 
+                                   Grid.Column="1">
                 <Button x:Name="HomeButton"
-                       Text="Home"
-                       Clicked="OnHomeClicked"
-                       BackgroundColor="Transparent"
-                       TextColor="#FFBD59"
-                       FontFamily="InstrumentSerif"
-                       WidthRequest="200">
+                        Text="Home"
+                        Clicked="OnHomeClicked"
+                        BackgroundColor="Transparent"
+                        TextColor="#FFBD59"
+                        FontFamily="InstrumentSerif"
+                        WidthRequest="150">
                     <Button.GestureRecognizers>
-                        <PointerGestureRecognizer PointerEntered="OnPointerEntered" PointerExited="OnPointerExited"/>
+                        <PointerGestureRecognizer PointerEntered="OnPointerEntered" 
+                                                  PointerExited="OnPointerExited"/>
                     </Button.GestureRecognizers>
                 </Button>
-
+                <Button x:Name="ProductsButton" 
+                        Text="Products" 
+                        Clicked="OnProductsClicked"
+                        BackgroundColor="Transparent" 
+                        TextColor="#FFBD59" 
+                        FontFamily="InstrumentSerif"
+                        WidthRequest="150">
+                    <Button.GestureRecognizers>
+                        <PointerGestureRecognizer PointerEntered="OnPointerEntered" 
+                                                  PointerExited="OnPointerExited"/>
+                    </Button.GestureRecognizers>
+                </Button>
                 <Button x:Name="AboutUsButton" 
-                       Text="About Us" 
-                       BackgroundColor="Transparent" 
-                       TextColor="#FFBD59" 
-                       FontFamily="InstrumentSerif"
-                       WidthRequest="200">
+                        Text="About Us" 
+                        Clicked="OnAboutUsClicked"
+                        BackgroundColor="Transparent" 
+                        TextColor="#FFBD59" 
+                        FontFamily="InstrumentSerif"
+                        WidthRequest="150">
                     <Button.GestureRecognizers>
-                        <PointerGestureRecognizer PointerEntered="OnPointerEntered" PointerExited="OnPointerExited"/>
+                        <PointerGestureRecognizer PointerEntered="OnPointerEntered" 
+                                                  PointerExited="OnPointerExited"/>
                     </Button.GestureRecognizers>
                 </Button>
-
-                <Button Text="Login/SignUp" 
-                       BackgroundColor="#FFBD59" 
-                       TextColor="White" 
-                       FontFamily="InstrumentSerif" 
-                       CornerRadius="20"
-                       WidthRequest="200"/>
-
+                <Button x:Name="LogInLogOutButton" 
+                        Text="Log In / LogOut" 
+                        Clicked="OnLogInLogOutClicked"
+                        BackgroundColor="Orange" 
+                        TextColor="White" 
+                        FontFamily="InstrumentSerif" 
+                        CornerRadius="10"
+                        WidthRequest="150">
+                    <Button.GestureRecognizers>
+                        <PointerGestureRecognizer PointerEntered="OnPointerEntered3" 
+                                                  PointerExited="OnPointerExited3"/>
+                    </Button.GestureRecognizers>
+                </Button>
             </HorizontalStackLayout>
-
-            <!-- Navbar -->
-
-            <!-- Cart -->
-
-            <Button Text="Cart" 
-                   BackgroundColor="#FFBD59" 
-                   TextColor="White" 
-                   FontFamily="InstrumentSerif" 
-                   CornerRadius="20" 
-                   Grid.Column="2"
-                   WidthRequest="200"/>
-
-            <!-- Cart -->
-
+            <Button x:Name="CartButton" 
+                    Text="Cart"  
+                    BackgroundColor="Orange" 
+                    TextColor="White" 
+                    FontFamily="InstrumentSerif" 
+                    CornerRadius="10" 
+                    Grid.Column="2"
+                    WidthRequest="150"
+                    BorderColor="White"
+                    BorderWidth="3">
+                <Button.GestureRecognizers>
+                    <PointerGestureRecognizer PointerEntered="OnPointerEntered3" 
+                                              PointerExited="OnPointerExited3"/>
+                </Button.GestureRecognizers>
+            </Button>
         </Grid>
-
-        <ScrollView x:Name="MainScrollView" BackgroundColor="#ddd7c4" Grid.Row="1">
-            <VerticalStackLayout Padding="20">
-                <!-- Title -->
+        <ScrollView x:Name="MainScrollView" 
+                    Grid.Row="1">
+            <VerticalStackLayout Padding="20"
+                                 BackgroundColor="#ddd7c4" >
                 <Label Text="ORDERS"
-               FontSize="50"
-               FontAttributes="Bold"
-               VerticalOptions="Start"
-               HorizontalOptions="Start"
+                       FontSize="50"
+                       FontAttributes="Bold"
+                       VerticalOptions="Start"
+                       HorizontalOptions="Start"
                        FontFamily="InstrumentSerif"
                        TextColor="#531414"/>
-                <BoxView HeightRequest="2" WidthRequest="160" BackgroundColor="Black" HorizontalOptions="Start"/>
-
-                <!-- Order Details Layout -->
+                <BoxView HeightRequest="2" 
+                         WidthRequest="160" 
+                         BackgroundColor="Black" 
+                         HorizontalOptions="Start"/>
                 <VerticalStackLayout>
-                    <!-- Column Headers -->
                     <Grid ColumnDefinitions="*,*,*,*" Padding="10">
-                        <Label Text="PRODUCT/S" Grid.Column="0" FontAttributes="Bold" FontSize="30" HorizontalOptions="Center" FontFamily="InstrumentSerif"/>
-                        <Label Text="PRICE" Grid.Column="1" FontAttributes="Bold" FontSize="30" HorizontalOptions="Center" FontFamily="InstrumentSerif"/>
-                        <Label Text="QUANTITY" Grid.Column="2" FontAttributes="Bold" FontSize="30" HorizontalOptions="Center" FontFamily="InstrumentSerif"/>
-                        <Label Text="TOTAL" Grid.Column="3" FontAttributes="Bold" FontSize="30" HorizontalOptions="Center" FontFamily="InstrumentSerif"/>
+                        <Label Text="PRODUCT/S" 
+                               Grid.Column="0" 
+                               FontAttributes="Bold" 
+                               FontSize="30" 
+                               HorizontalOptions="Center" 
+                               FontFamily="InstrumentSerif"/>
+                        <Label Text="PRICE" 
+                               Grid.Column="1" 
+                               FontAttributes="Bold" 
+                               FontSize="30" 
+                               HorizontalOptions="Center" 
+                               FontFamily="InstrumentSerif"/>
+                        <Label Text="QUANTITY" 
+                               Grid.Column="2" 
+                               FontAttributes="Bold" 
+                               FontSize="30" 
+                               HorizontalOptions="Center" 
+                               FontFamily="InstrumentSerif"/>
+                        <Label Text="TOTAL" 
+                               Grid.Column="3" 
+                               FontAttributes="Bold" 
+                               FontSize="30" 
+                               HorizontalOptions="Center" 
+                               FontFamily="InstrumentSerif"/>
                     </Grid>
-
-                    <!-- Orders List -->
                     <CollectionView ItemsSource="{Binding Orders}">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Grid ColumnDefinitions="*,*,*,*">
-                                    <Label Text="{Binding ProductName}" Grid.Column="0" HorizontalOptions="Center" FontSize="40" FontFamily="InstrumentSerif"/>
-                                    <Label Text="{Binding Price, StringFormat='{0:N2}'}" Grid.Column="1" HorizontalOptions="Center" FontSize="40" FontFamily="InstrumentSerif"/>
-
-                                    <!-- Quantity Controls -->
-                                    <Grid Grid.Column="2" ColumnDefinitions="Auto, Auto, Auto" HorizontalOptions="Center">
-                                        <!-- Plus Button -->
-                                        <Button Text="+" Clicked="OnPlusClicked" Grid.Column="0"
-            TextColor="Black" FontAttributes="Bold"
-            BorderColor="Black" BorderWidth="3" BackgroundColor="Transparent"
-            CornerRadius="25" WidthRequest="50" HeightRequest="50" FontSize="40" Padding="0"  Margin="0,0,10,0"/>
-
-                                        <!-- Quantity -->
-                                        <Label Text="{Binding Quantity}" Grid.Column="2"
-           HorizontalOptions="Start" VerticalOptions="Center"
-           FontSize="40" FontFamily="InstrumentSerif" Margin="20,0,0,0"/>
-
-                                        <!-- Minus Button -->
-                                        <Button Text="-" Clicked="OnMinusClicked" Grid.Column="1"
-            TextColor="Black" FontAttributes="Bold"
-            BorderColor="Black" BorderWidth="3" BackgroundColor="Transparent"
-            CornerRadius="25" WidthRequest="50" HeightRequest="50" FontSize="40" Padding="0"  Margin="10,0,10,0"/>
-
+                                    <Label Text="{Binding ProductName}" 
+                                           Grid.Column="0" 
+                                           HorizontalOptions="Center" 
+                                           FontSize="40" 
+                                           FontFamily="InstrumentSerif"/>
+                                    <Label Text="{Binding Price, StringFormat='{0:N2}'}" 
+                                           Grid.Column="1" 
+                                           HorizontalOptions="Center" 
+                                           FontSize="40" 
+                                           FontFamily="InstrumentSerif"/>
+                                    <Grid Grid.Column="2" 
+                                          ColumnDefinitions="Auto, Auto, Auto" 
+                                          HorizontalOptions="Center">
+                                        <Button Text="+" 
+                                                Clicked="OnPlusClicked" 
+                                                Grid.Column="0"
+                                                TextColor="Black" 
+                                                FontAttributes="Bold"
+                                                BorderColor="Black" 
+                                                BorderWidth="3" 
+                                                BackgroundColor="Transparent"
+                                                CornerRadius="25" 
+                                                WidthRequest="40" 
+                                                HeightRequest="40" 
+                                                FontSize="30" 
+                                                Padding="0"  
+                                                Margin="0,0,10,0"/>
+                                        <Label Text="{Binding Quantity}" 
+                                               Grid.Column="2"
+                                               HorizontalOptions="Start" 
+                                               VerticalOptions="Center"
+                                               FontSize="40" 
+                                               FontFamily="InstrumentSerif" 
+                                               Margin="20,0,0,0"/>
+                                        <Button Text="-" 
+                                                Clicked="OnMinusClicked" 
+                                                Grid.Column="1"
+                                                TextColor="Black" 
+                                                FontAttributes="Bold"
+                                                BorderColor="Black" 
+                                                BorderWidth="3" 
+                                                BackgroundColor="Transparent"
+                                                CornerRadius="25" 
+                                                WidthRequest="40" 
+                                                HeightRequest="40" 
+                                                FontSize="40" 
+                                                Padding="0"  
+                                                Margin="10,0,10,0"/>
                                     </Grid>
-
-                                    <Label Text="{Binding TotalPrice, StringFormat='{0:N2}'}" Grid.Column="3" HorizontalOptions="Center" FontSize="40" FontFamily="InstrumentSerif"/>
-
+                                    <Label Text="{Binding TotalPrice, StringFormat='{0:N2}'}" 
+                                           Grid.Column="3" 
+                                           HorizontalOptions="Center" 
+                                           FontSize="40" 
+                                           FontFamily="InstrumentSerif"/>
                                 </Grid>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
-
-                    <!-- Total Amount -->
-                    <HorizontalStackLayout HorizontalOptions="End" Margin="0,20,0,0">
-                        <Label Text="Total Amount:" FontAttributes="Bold" FontSize="40" FontFamily="InstrumentSerif"/>
-                        <Label Text="{Binding TotalAmount}" FontSize="40" FontFamily="InstrumentSerif"/>
+                    <HorizontalStackLayout HorizontalOptions="End" 
+                                           Margin="0,20,0,0">
+                        <Label Text="Total Amount:" 
+                               FontAttributes="Bold" 
+                               FontSize="40" 
+                               FontFamily="InstrumentSerif"/>
+                        <Label Text="{Binding TotalAmount}" 
+                               FontSize="40" 
+                               FontFamily="InstrumentSerif"/>
                     </HorizontalStackLayout>
                 </VerticalStackLayout>
-
-                <!-- Checkout Button -->
                 <Button Text="Check Out"
                         Clicked="OnCheckOutClicked"
-                BackgroundColor="#FFBD59"
-                TextColor="White"
-                FontAttributes="Bold"
-                HorizontalOptions="End"
-                Padding="10,5"
-                CornerRadius="10"/>
+                        BackgroundColor="Orange"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        HorizontalOptions="End"
+                        Padding="10,5"
+                        CornerRadius="10"/>
             </VerticalStackLayout>
         </ScrollView>
     </Grid>

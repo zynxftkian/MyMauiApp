@@ -1,9 +1,4 @@
-﻿using Microsoft.Maui.Controls;
-using System;
-using System.Threading.Tasks;
-using System.Linq; // Make sure to include this for FirstOrDefault()
-
-namespace Products
+﻿namespace Products
 {
     public partial class ProductsPage : ContentPage
     {
@@ -30,7 +25,7 @@ namespace Products
             }
         }
 
-        // ✅ Fixed: Added 'async' to support 'await DisplayAlert'
+        // Order button click event
         private async void OnOrderClicked(object sender, EventArgs e)
         {
             Button button = (Button)sender;
@@ -66,20 +61,25 @@ namespace Products
                 App.Orders.Add(new OrderItem { ProductName = productName, Price = price });
             }
 
-            // ✅ Show alert instead of navigating
             await DisplayAlert("Order Placed", "Your order has been added to the Cart page.", "OK");
         }
 
         // Scroll to Products section when clicking "Products" in Navbar
-        private async void OnProductsClicked(object sender, EventArgs e)
+        public async void OnProductsClicked(object sender, EventArgs e)
         {
-            await MainScrollView.ScrollToAsync(ProductsContainer, ScrollToPosition.Start, true);
+            Button homeButton = this.FindByName<Button>("HomeButton");
+            homeButton.BorderWidth = 0;
+            ApplyButtonStyle(ProductsButton);
+            await ProductsScrollView.ScrollToAsync(ProductsContainer, ScrollToPosition.Start, true);
         }
-
-        // ✅ Fixed: Removed unnecessary 'Navigation.PushAsync(new ProductsPage())'
+        // Scroll to Home (Does NOT open dropdown)
         private async void OnHomeClicked(object sender, EventArgs e)
         {
-            await MainScrollView.ScrollToAsync(0, 0, true);
+            Button homeButton = this.FindByName<Button>("HomeButton");
+            homeButton.BorderWidth = 3;
+            Button productsButton = this.FindByName<Button>("ProductsButton");
+            productsButton.BorderWidth = 0;
+            await ProductsScrollView.ScrollToAsync(0, 0, true);
         }
 
         // Navigate to OrdersPage
@@ -87,6 +87,7 @@ namespace Products
         {
             await Navigation.PushAsync(new OrdersPage());
         }
+
         private void OnPointerEntered(object sender, PointerEventArgs e)
         {
             if (sender is Button button)
@@ -103,5 +104,39 @@ namespace Products
             }
         }
 
+        private void OnPointerEntered3(object sender, PointerEventArgs e)
+        {
+            if (sender is Button button)
+            {
+                button.BackgroundColor = Colors.PeachPuff;
+            }
+        }
+
+        private void OnPointerExited3(object sender, PointerEventArgs e)
+        {
+            if (sender is Button button)
+            {
+                button.BackgroundColor = Colors.Orange;
+            }
+        }
+
+        private async void OnAboutUsClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AboutUsPage());
+        }
+
+        private async void OnLogInLogOutClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new LogInLogOutPage());
+        }
+        private void ApplyButtonStyle(Button button)
+        {
+            button.BackgroundColor = Color.FromHex("#531414");
+            button.TextColor = Color.FromHex("#FFBD59");
+            button.FontFamily = "InstrumentSerif";
+            button.BorderColor = Colors.Black;  // Use Colors.White here
+            button.BorderWidth = 3;
+            button.WidthRequest = 150;
+        }
     }
 }
